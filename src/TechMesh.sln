@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechMesh.Auth.Api", "TechMesh.Auth.Api\TechMesh.Auth.Api.csproj", "{F87B1792-000A-4BD5-92CF-BCDAE23AB65D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechMesh.Auth.Application", "TechMesh.Auth.Application\TechMesh.Auth.Application.csproj", "{39499850-043E-42C9-9446-918C620E6DBD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechMesh.Auth.Domain", "TechMesh.Auth.Domain\TechMesh.Auth.Domain.csproj", "{254311D9-80F1-443F-B36A-BB7621FBFE9C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechMesh.Auth.Infrastructure", "TechMesh.Auth.Infrastructure\TechMesh.Auth.Infrastructure.csproj", "{3D963160-DD42-4C0B-B8C9-0F142664EE7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechMesh.Auth.Api", "TechMesh.Auth.Api\TechMesh.Auth.Api.csproj", "{0375433D-4FD0-467C-A597-173526DCF631}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +21,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F87B1792-000A-4BD5-92CF-BCDAE23AB65D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F87B1792-000A-4BD5-92CF-BCDAE23AB65D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F87B1792-000A-4BD5-92CF-BCDAE23AB65D}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{F87B1792-000A-4BD5-92CF-BCDAE23AB65D}.Debug|x64.Build.0 = Debug|Any CPU
-		{F87B1792-000A-4BD5-92CF-BCDAE23AB65D}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{F87B1792-000A-4BD5-92CF-BCDAE23AB65D}.Debug|x86.Build.0 = Debug|Any CPU
-		{F87B1792-000A-4BD5-92CF-BCDAE23AB65D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F87B1792-000A-4BD5-92CF-BCDAE23AB65D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F87B1792-000A-4BD5-92CF-BCDAE23AB65D}.Release|x64.ActiveCfg = Release|Any CPU
-		{F87B1792-000A-4BD5-92CF-BCDAE23AB65D}.Release|x64.Build.0 = Release|Any CPU
-		{F87B1792-000A-4BD5-92CF-BCDAE23AB65D}.Release|x86.ActiveCfg = Release|Any CPU
-		{F87B1792-000A-4BD5-92CF-BCDAE23AB65D}.Release|x86.Build.0 = Release|Any CPU
 		{39499850-043E-42C9-9446-918C620E6DBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{39499850-043E-42C9-9446-918C620E6DBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39499850-043E-42C9-9446-918C620E6DBD}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -69,6 +57,18 @@ Global
 		{3D963160-DD42-4C0B-B8C9-0F142664EE7A}.Release|x64.Build.0 = Release|Any CPU
 		{3D963160-DD42-4C0B-B8C9-0F142664EE7A}.Release|x86.ActiveCfg = Release|Any CPU
 		{3D963160-DD42-4C0B-B8C9-0F142664EE7A}.Release|x86.Build.0 = Release|Any CPU
+		{0375433D-4FD0-467C-A597-173526DCF631}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0375433D-4FD0-467C-A597-173526DCF631}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0375433D-4FD0-467C-A597-173526DCF631}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0375433D-4FD0-467C-A597-173526DCF631}.Debug|x64.Build.0 = Debug|Any CPU
+		{0375433D-4FD0-467C-A597-173526DCF631}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0375433D-4FD0-467C-A597-173526DCF631}.Debug|x86.Build.0 = Debug|Any CPU
+		{0375433D-4FD0-467C-A597-173526DCF631}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0375433D-4FD0-467C-A597-173526DCF631}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0375433D-4FD0-467C-A597-173526DCF631}.Release|x64.ActiveCfg = Release|Any CPU
+		{0375433D-4FD0-467C-A597-173526DCF631}.Release|x64.Build.0 = Release|Any CPU
+		{0375433D-4FD0-467C-A597-173526DCF631}.Release|x86.ActiveCfg = Release|Any CPU
+		{0375433D-4FD0-467C-A597-173526DCF631}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
