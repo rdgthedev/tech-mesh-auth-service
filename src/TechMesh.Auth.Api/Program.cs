@@ -2,8 +2,10 @@ using Microsoft.EntityFrameworkCore;
 using TechMesh.Auth.Application.Contracts.Services;
 using TechMesh.Auth.Application.Services;
 using TechMesh.Auth.Domain.Contracts.Repositories;
+using TechMesh.Auth.Domain.Contracts.UnitOfWork;
 using TechMesh.Auth.Infrastructure.Database;
 using TechMesh.Auth.Infrastructure.Persistence.Repositories;
+using TechMesh.Auth.Infrastructure.Persistence.UnitOfWork;
 using TechMesh.Auth.Infrastructure.Services.Auth;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +25,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
+
+#endregion
+
+#region Transaction
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 #endregion
 

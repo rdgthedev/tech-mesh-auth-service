@@ -1,9 +1,10 @@
 ﻿using TechMesh.Auth.Application.Contracts.Services;
 using TechMesh.Auth.Application.DTOs.Auth.Request;
-using TechMesh.Auth.Application.DTOs.Users;
+using TechMesh.Auth.Application.DTOs.User.Request;
 using TechMesh.Auth.Application.DTOs.Users.Response;
 using TechMesh.Auth.Application.Mappers;
 using TechMesh.Auth.Domain.Contracts.Repositories;
+using TechMesh.Auth.Domain.Contracts.UnitOfWork;
 
 namespace TechMesh.Auth.Application.Services;
 
@@ -11,11 +12,16 @@ public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
     private readonly IRoleRepository _roleRepository;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public UserService(IUserRepository userRepository, IRoleRepository roleRepository)
+    public UserService(
+        IUserRepository userRepository,
+        IRoleRepository roleRepository,
+        IUnitOfWork unitOfWork)
     {
         _userRepository = userRepository;
         _roleRepository = roleRepository;
+        _unitOfWork = unitOfWork;
     }
 
     public async Task<List<UserDetailsResponse>> GetAllAsync(CancellationToken cancellationToken)
@@ -25,7 +31,7 @@ public class UserService : IUserService
         if (!users.Any())
             throw new Exception("Users not found!");
 
-        return UserMapper.FromEntities(users);
+        return Mapper.Map(users);
     }
 
     public async Task<UserDetailsResponse> GetByIdAsync(Guid id, CancellationToken cancellationToken)
@@ -35,7 +41,7 @@ public class UserService : IUserService
         if (user is null)
             throw new Exception("User not found!");
 
-        return UserMapper.FromEntity(user);
+        return Mapper.Map(user);
     }
 
     public async Task UpdateAsync(UpdateUserRequest updateUserRequest, CancellationToken cancellationToken)
@@ -48,6 +54,8 @@ public class UserService : IUserService
         user.UpdateEmail(updateUserRequest.Email);
 
         await _userRepository.UpdateAsync(user, cancellationToken);
+
+        await _unitOfWork.CommitAsync(cancellationToken);
     }
 
     public async Task DeactivateAsync(Guid id, CancellationToken cancellationToken)
@@ -60,6 +68,8 @@ public class UserService : IUserService
         user.Deativate();
 
         await _userRepository.UpdateAsync(user, cancellationToken);
+
+        await _unitOfWork.CommitAsync(cancellationToken);
     }
 
     public async Task ActivateAsync(Guid id, CancellationToken cancellationToken)
@@ -72,6 +82,8 @@ public class UserService : IUserService
         user.Activate();
 
         await _userRepository.UpdateAsync(user, cancellationToken);
+
+        await _unitOfWork.CommitAsync(cancellationToken);
     }
 
     public async Task ChangeRoleAsync(ChangeUserRoleRequest changeUserRoleRequest, CancellationToken cancellationToken)
@@ -92,5 +104,7 @@ public class UserService : IUserService
         user.ChangeRole(role.Id);
 
         await _userRepository.UpdateAsync(user, cancellationToken);
+
+        await _unitOfWork.CommitAsync(cancellationToken);
     }
 }

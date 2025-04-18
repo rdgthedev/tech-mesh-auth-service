@@ -13,4 +13,7 @@ public class Role : BaseEntity
         Name = name;
         Status = ERoleStatus.Active;
     }
+
+    public void ChangeName(string name)
+        => Name = name;
 }

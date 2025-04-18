@@ -2,6 +2,7 @@
 using TechMesh.Auth.Application.DTOs.Auth.Request;
 using TechMesh.Auth.Application.DTOs.Tokens.Response;
 using TechMesh.Auth.Application.DTOs.Users;
+using TechMesh.Auth.Application.Mappers;
 using TechMesh.Auth.Domain.Contracts.Repositories;
 using TechMesh.Auth.Domain.Entities;
 
@@ -14,17 +15,18 @@ public class AuthService : IAuthService
     public AuthService(IUserRepository userRepository)
         => _userRepository = userRepository;
 
-    public async Task<AuthTokensResponse> RegisterAsync(RegisterUserRequest userRequest,
+    public async Task<AuthTokensResponse> RegisterAsync(
+        RegisterUserRequest registerUserRequest,
         CancellationToken cancellationToken)
     {
-        var user = await _userRepository.GetByEmail(userRequest.Email, cancellationToken);
+        var user = await _userRepository.GetByEmail(registerUserRequest.Email, cancellationToken);
 
         if (user is not null)
             throw new Exception("User already exists!");
 
         //criptografar a senha
 
-        await _userRepository.CreateAsync(new User(userRequest.Email, userRequest.Password), cancellationToken);
+        await _userRepository.CreateAsync(Mapper.Map(registerUserRequest), cancellationToken);
 
         //chamar endpoint /api/users/create -> User Service
 

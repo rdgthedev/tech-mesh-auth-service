@@ -1,6 +1,3 @@
 ﻿namespace TechMesh.Auth.Application.DTOs.Role.Request;
 
-public class CreateRoleRequest
-{
-    
-}
+public record CreateRoleRequest(string Name);

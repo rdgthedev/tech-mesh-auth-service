@@ -1,4 +1,5 @@
 ﻿using TechMesh.Auth.Application.DTOs.Auth.Request;
+using TechMesh.Auth.Application.DTOs.User.Request;
 using TechMesh.Auth.Application.DTOs.Users;
 using TechMesh.Auth.Application.DTOs.Users.Response;
 

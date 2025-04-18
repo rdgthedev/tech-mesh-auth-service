@@ -9,10 +9,10 @@ public class Token : BaseEntity
     public DateTime ExpirationTimeInMinutes { get; private set; }
     public bool IsRevoked { get; private set; }
     public ETokenType Type { get; private set; }
-    public int UserId { get; private set; }
+    public Guid UserId { get; private set; }
     public User User { get; private set; } = null!;
 
-    public Token(string value, int userId)
+    public Token(string value, Guid userId)
     {
         Value = value;
         UserId = userId;

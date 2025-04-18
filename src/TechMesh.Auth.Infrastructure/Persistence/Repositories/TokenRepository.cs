@@ -1,32 +1,29 @@
-﻿using TechMesh.Auth.Domain.Contracts.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using TechMesh.Auth.Domain.Contracts.Repositories;
 using TechMesh.Auth.Domain.Entities;
+using TechMesh.Auth.Infrastructure.Database;
 
 namespace TechMesh.Auth.Infrastructure.Persistence.Repositories;
 
 public class TokenRepository : ITokenRepository
 {
-    public Task<List<User>> GetAllAsync(CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
-    }
+    private readonly ApplicationDbContext _context;
 
-    public Task<User> GetByTokenValueAsync(Guid token, CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
-    }
+    public TokenRepository(ApplicationDbContext context)
+        => _context = context;
 
-    public Task CreateAsync(Token token, CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<Token?> GetByTokenAsync(string token, CancellationToken cancellationToken)
+        => await _context.Tokens.FirstOrDefaultAsync(t => t.Value == token, cancellationToken);
 
-    public Task UpdateAsync(Token token, CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<Token?> GetByUserIdAsync(Guid userId, CancellationToken cancellationToken)
+        => await _context.Tokens.FirstOrDefaultAsync(t => t.UserId == userId, cancellationToken);
 
-    public Task DeleteAsync(Token token, CancellationToken cancellationToken)
+    public async Task CreateAsync(Token token, CancellationToken cancellationToken)
+        => await _context.Tokens.AddAsync(token, cancellationToken);
+
+    public async Task DeleteAsync(Token token, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        _context.Tokens.Remove(token);
+        await Task.CompletedTask;
     }
 }
